@@ -1,0 +1,28 @@
+<%= link_to 'ADD', new_product_path, class: "btn btn-primary" %>
+<%= link_to "Import Products", "#", class: "btn btn-success" %><br/><br/>
+<% if @products.present? %>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.description %></td>
+          <td><%= link_to 'Edit', edit_product_path(product.id) %></td>
+          <td><%= link_to 'Delete', product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h5 class="text-center">Products are not avilable.</h5>
+<% end %>
