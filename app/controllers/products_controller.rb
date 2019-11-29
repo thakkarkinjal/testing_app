@@ -53,6 +53,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def import
+    csv_path = params[:file].path
+    ProductAddWorker.perform_async(csv_path)
+    redirect_to products_path
+  end
+
   private
 
   def product_params

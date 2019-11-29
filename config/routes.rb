@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       post :create_product
+      post :import
     end
   end
 end

@@ -1,5 +1,9 @@
 <%= link_to 'ADD', new_product_path, class: "btn btn-primary" %>
-<%= link_to "Import Products", "#", class: "btn btn-success" %><br/><br/>
+<%= form_tag import_products_path, multipart: true do %>
+  <%= file_field_tag :file, :accept => '.csv' %>
+  <%= submit_tag  "Import Products",class: "btn btn-success" %>
+<% end %>
+<br/><br/>
 <% if @products.present? %>
   <table class="table">
     <thead class="thead-light">
